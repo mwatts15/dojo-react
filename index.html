@@ -24,7 +24,7 @@
                 'dijit/layout/BorderContainer',
                 'react',
                 'react-dom',
-                'markw/LikeButton'
+                'markw/Clock'
             ], function(
                 on,
                 Button,
@@ -32,7 +32,7 @@
                 BorderContainer,
                 React,
                 ReactDOM,
-                LikeButton
+                Clock
             ) {
                 let but = new Button({
                     label: "Something"
@@ -52,12 +52,14 @@
                 let layout = new BorderContainer();
                 layout.addChild(cp);
                 layout.addChild(cp1);
+                layout.placeAt('meat');
+                let clock = React.createElement(Clock);
+                let renderedClock = ReactDOM.render(clock, cp1.containerNode);
                 let i = 0;
                 on(but, 'click', () => {
-                    console.log("Button", i++);
+                    console.log("Clock state", renderedClock.state);
+                    renderedClock.setState({offset: renderedClock.state.offset + 1});
                 });
-                layout.placeAt('meat');
-                ReactDOM.render(React.createElement(LikeButton), cp1.containerNode);
             });
         </script>
     </body>
