@@ -22,17 +22,15 @@
                 'dijit/form/Button',
                 'dijit/layout/ContentPane',
                 'dijit/layout/BorderContainer',
-                'react',
-                'react-dom',
-                'markw/Clock'
+                'markw/Clock',
+                'markw/DWrapper'
             ], function(
                 on,
                 Button,
                 ContentPane,
                 BorderContainer,
-                React,
-                ReactDOM,
-                Clock
+                Clock,
+                DWrapper
             ) {
                 let but = new Button({
                     label: "Something"
@@ -53,12 +51,16 @@
                 layout.addChild(cp);
                 layout.addChild(cp1);
                 layout.placeAt('meat');
-                let clock = React.createElement(Clock);
-                let renderedClock = ReactDOM.render(clock, cp1.containerNode);
-                let i = 0;
+                let DWClock = DWrapper(Clock);
+
+                let clock0 = new DWClock();
+                clock0.placeAt(cp1.containerNode, 'last');
+
+                let clock1 = new DWClock();
+                clock1.placeAt(cp1.containerNode, 'last');
+
                 on(but, 'click', () => {
-                    console.log("Clock state", renderedClock.state);
-                    renderedClock.setState({offset: renderedClock.state.offset + 1});
+-                    clock0.setReactState({show_clock: !clock0.reactState.show_clock});
                 });
             });
         </script>

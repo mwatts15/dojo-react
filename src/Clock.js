@@ -7,7 +7,7 @@ define([
         constructor(props) {
             super(props);
             this.state = {date: new Date(),
-                          offset: 0};
+                          show_clock: true};
         }
 
         componentDidMount() {
@@ -22,18 +22,20 @@ define([
         }
 
         tick() {
-            this.setState({
-                date: new Date()
-            });
+            this.setState({date: new Date()});
         }
 
         render() {
-            return (
-                <div>
-                <h1>Hello, world!</h1>
-                <h2>It is {this.state.offset + this.state.date.toLocaleTimeString()}.</h2>
-                </div>
-            );
+            if (this.state.show_clock) {
+                return (
+                    <div className="oh-hello">
+                        <h1>Hello, world!</h1>
+                        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                    </div>
+                );
+            } else {
+                return null;
+            }
         }
     }
     return Clock;
