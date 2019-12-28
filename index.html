@@ -14,23 +14,27 @@
         </script>
         <script src="dojo/dojo.js"></script>
     </head>
-    <body>
+    <body class="claro">
         <div id="meat"></div>
         <script>
             require([
                 'dojo/on',
                 'dijit/form/Button',
+                'dijit/Calendar',
                 'dijit/layout/ContentPane',
                 'dijit/layout/BorderContainer',
                 'markw/Clock',
-                'markw/DWrapper'
+                'markw/DijitWrapper',
+                'markw/ReactWrapper'
             ], function(
                 on,
                 Button,
+                Calendar,
                 ContentPane,
                 BorderContainer,
                 Clock,
-                DWrapper
+                DWrapper,
+                RWrapper,
             ) {
                 let but = new Button({
                     label: "Something"
@@ -44,7 +48,7 @@
                 cp.addChild(but);
 
                 let cp1 = new ContentPane({
-                    region: 'right',
+                    region: 'right'
                 });
 
                 let layout = new BorderContainer();

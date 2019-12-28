@@ -1,7 +1,11 @@
 define([
     'react',
+    './LikeButton',
+    './RCalendar'
 ], function(
-    React
+    React,
+    LikeButton,
+    RCalendar
 ) {
     class Clock extends React.Component {
         constructor(props) {
@@ -31,6 +35,7 @@ define([
                     <div className="oh-hello">
                         <h1>Hello, world!</h1>
                         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                        <RCalendar />
                     </div>
                 );
             } else {

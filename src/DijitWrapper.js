@@ -11,8 +11,8 @@ define([
     ReactDOM
 ) {
     return function (clz) {
-        return declare('markw.DWrapper_' + clz.name, [_WidgetBase], {
-            baseClass:  'dwrapper_' + clz.name,
+        return declare('markw.DijitWrapper_' + clz.name, [_WidgetBase], {
+            baseClass:  'dijitWrapper_' + clz.name,
             constructor () {
                 this.rElement = React.createElement(clz);
                 Object.defineProperties(this, {
